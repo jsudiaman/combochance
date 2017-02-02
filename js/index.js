@@ -161,7 +161,7 @@ $(document).ready(function () {
                         }).join(", "))
                         .append("<br>Deck Size: " + data.deckSize)
                         .append(", Cards in Hand: " + data.handSize)
-                        .append("<br><br>The chance of you pulling this off is" + (obj.experimental ? ' approximately ' : ' '))
+                        .append("<br><br>The chance of you pulling this off is" + (obj.experimental ? ' <a href="#" data-toggle="modal" data-target="#approximately">approximately</a> ' : ' '))
                         .append(Number(obj.percent).toPrecision(3) + "%.");
                 } catch (e) {
                     handle(e);
