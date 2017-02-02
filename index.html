@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title>Combo Chance</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/math.js"></script>
+    <script type="text/javascript" src="js/detectmobilebrowser.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+<div class="container-fluid pull-left">
+    <header id="examples" class="container">
+        <div class="row clearfix">
+            <div class="col-md-6 column">
+                <h1>Combo Chance</h1>
+                <p>How often will you pull off that combo?</p>
+                <div class="panel list-group">
+                    <a href="#" class="list-group-item" data-toggle="collapse" data-target="#sm"
+                       data-parent="#examples"><span class="glyphicon glyphicon-chevron-right"></span> Examples</a>
+                    <div id="sm" class="sublinks collapse in" aria-expanded="false">
+                        <a id="exodia" href="#" class="list-group-item small">Exodia OTK</a>
+                        <a id="channelFireball" href="#" class="list-group-item small">Channel + Fireball OTK</a>
+                        <a id="leyline" href="#" class="list-group-item small">Leyline of Sanctity Opening</a>
+                        <a id="birdsOfParadise" href="#" class="list-group-item small">Birds of Paradise Opening</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <br>
+
+    <!-- Table -->
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-8 column">
+                <table class="table table-bordered table-hover" id="tab_logic">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Card Name</th>
+                        <th class="text-center">Amount in Deck</th>
+                        <th class="text-center">Amount Required</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="card0">
+                        <td class="col-md-4">
+                            <input type="text" id="name0" placeholder="Card Name" class="form-control">
+                        </td>
+                        <td class="col-md-2">
+                            <input type="number" id="aid0" value="1" class="form-control num">
+                        </td>
+                        <td class="col-md-2">
+                            <input type="number" id="ar0" value="1" class="form-control num">
+                        </td>
+                    </tr>
+                    <tr id="card1"></tr>
+                    </tbody>
+                </table>
+                <a id="add_row" class="btn btn-default btn-sm">Another One</a>
+                <a id='delete_row' class="btn btn-default btn-sm">Delete One</a>
+            </div>
+        </div>
+        <br>
+
+        <!-- Form -->
+        <form id="primaryForm" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-1 control-label" for="deckSize"
+                       data-toggle="tooltip" title="Number of cards in the deck.">
+                    Deck Size </label>
+                <div class="col-md-2">
+                    <input class="form-control" type="number" id="deckSize" placeholder="Deck Size"
+                           required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label" for="handSize"
+                       data-toggle="tooltip"
+                       title="Draw this many cards from the deck.">
+                    Hand Size </label>
+                <div class="col-md-2">
+                    <input class="form-control" type="number" id="handSize" placeholder="Hand Size"
+                           required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Compute</button>
+            <button type="button" id="clear" class="btn btn-default">Reset</button>
+        </form>
+        <br>
+
+        <!-- Results -->
+        <div id="results" style="margin-bottom: .5em"></div>
+        <p>
+            <small><a href="#">Back to Top</a> | <a href="https://github.com/sudiamanj/ComboChance" target="_blank">View
+                Source Code</a></small>
+        </p>
+    </div>
+</div>
+
+<script type="text/javascript">$('[data-toggle="tooltip"]').tooltip();</script>
+</body>
+</html>
