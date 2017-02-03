@@ -9,6 +9,6 @@ Let's say that your deck has 3 Valhallas and 3 Kristyas. To perform this combo, 
 
 <img src="https://raw.githubusercontent.com/sudiamanj/combochance/master/img/screenshot.png" alt="Screenshot" width="800" height="480">
 
-This tells us that we will open Valhalla + Kristya about once in every 10 duels.
+According to Combo Chance, you will open Valhalla + Kristya about once in every 10 duels.
 
 So, got a combo in mind? [Give it a try!](https://sudicode.com/combochance)
