@@ -1,163 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <title>Combo Chance</title>
+  <title>Combo Chance</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/style.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.js"></script>
-    <script type="text/javascript" src="js/common.js"></script>
-    <script type="text/javascript" src="js/math.js"></script>
-    <script type="text/javascript" src="js/detectmobilebrowser.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.js"></script>
+  <script type="text/javascript" src="js/common.js"></script>
+  <script type="text/javascript" src="js/math.js"></script>
+  <script type="text/javascript" src="js/detectmobilebrowser.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
 </head>
+
 <body>
-<div class="container-fluid pull-left">
+  <div class="container-fluid pull-left">
     <header id="examples" class="container">
-        <div class="row clearfix">
-            <div class="col-md-6 column">
-                <img src="img/logo.png" alt="Combo Chance">
-                <h1>Combo Chance</h1>
-                <p>How often will you pull off that combo?</p>
-                <div class="panel list-group">
-                    <a href="#" class="list-group-item" data-toggle="collapse" data-target="#sm"
-                       data-parent="#examples"><span class="glyphicon glyphicon-chevron-right"></span> Examples</a>
-                    <div id="sm" class="sublinks collapse in" aria-expanded="false">
-                        <a id="exodia" href="#" class="list-group-item small">Exodia OTK</a>
-                        <a id="channelFireball" href="#" class="list-group-item small">Channel + Fireball OTK</a>
-                        <a id="leyline" href="#" class="list-group-item small">Leyline of Sanctity Opening</a>
-                        <a id="birdsOfParadise" href="#" class="list-group-item small">Birds of Paradise Opening</a>
-                    </div>
-                </div>
+      <div class="row clearfix">
+        <div class="col-md-6 column">
+          <img src="img/logo.png" alt="Combo Chance">
+          <h1>Combo Chance</h1>
+          <p>How often will you pull off that combo?</p>
+          <div class="panel list-group">
+            <a href="#" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#examples"><span class="glyphicon glyphicon-chevron-right"></span> Examples</a>
+            <div id="sm" class="sublinks collapse in" aria-expanded="false">
+              <a id="exodia" href="#" class="list-group-item small">Exodia OTK</a>
+              <a id="channelFireball" href="#" class="list-group-item small">Channel + Fireball OTK</a>
+              <a id="leyline" href="#" class="list-group-item small">Leyline of Sanctity Opening</a>
+              <a id="birdsOfParadise" href="#" class="list-group-item small">Birds of Paradise Opening</a>
             </div>
+          </div>
         </div>
+      </div>
     </header>
     <br>
 
     <!-- Table -->
     <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-8 column">
-                <table class="table table-bordered table-hover" id="tab_logic">
-                    <thead>
-                    <tr>
-                        <th class="text-center">Card Name</th>
-                        <th class="text-center">Amount in Deck</th>
-                        <th class="text-center">Amount Required</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr id="card0">
-                        <td class="col-md-4">
-                            <input type="text" id="name0" placeholder="Card Name" class="form-control">
-                        </td>
-                        <td class="col-md-2">
-                            <input type="number" id="aid0" value="1" class="form-control num">
-                        </td>
-                        <td class="col-md-2">
-                            <input type="number" id="ar0" value="1" class="form-control num">
-                        </td>
-                    </tr>
-                    <tr id="card1"></tr>
-                    </tbody>
-                </table>
-                <a id="add_row" class="btn btn-default btn-sm">Another One</a>
-                <a id='delete_row' class="btn btn-default btn-sm">Delete One</a>
-            </div>
+      <div class="row clearfix">
+        <div class="col-md-8 column">
+          <table class="table table-bordered table-hover" id="tab_logic">
+            <thead>
+              <tr>
+                <th class="text-center">Card Name</th>
+                <th class="text-center">Amount in Deck</th>
+                <th class="text-center">Amount Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="card0">
+                <td class="col-md-4">
+                  <input type="text" id="name0" placeholder="Card Name" class="form-control">
+                </td>
+                <td class="col-md-2">
+                  <input type="number" id="aid0" value="1" class="form-control num">
+                </td>
+                <td class="col-md-2">
+                  <input type="number" id="ar0" value="1" class="form-control num">
+                </td>
+              </tr>
+              <tr id="card1"></tr>
+            </tbody>
+          </table>
+          <a id="add_row" class="btn btn-default btn-sm">Another One</a>
+          <a id="delete_row" class="btn btn-default btn-sm">Delete One</a>
         </div>
-        <br>
+      </div>
+      <br>
 
-        <!-- Form -->
-        <form id="primaryForm" class="form-horizontal">
-            <div class="form-group">
-                <label class="col-md-1 control-label" for="deckSize" data-toggle="tooltip" title="Number of cards in the deck.">Deck&nbsp;Size</label>
-                <div class="col-md-2">
-                    <input class="form-control" type="number" id="deckSize" placeholder="Deck Size"
-                           required>
-                </div>
+      <!-- Form -->
+      <form id="primaryForm" class="form-horizontal">
+        <div class="form-group">
+          <label class="col-md-1 control-label" for="deckSize" data-toggle="tooltip" title="Number of cards in the deck.">Deck&nbsp;Size</label>
+          <div class="col-md-2">
+            <input class="form-control" type="number" id="deckSize" placeholder="Deck Size" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-1 control-label" for="handSize" data-toggle="tooltip" title="Draw this many cards from the deck.">Hand&nbsp;Size</label>
+          <div class="col-md-2">
+            <input class="form-control" type="number" id="handSize" placeholder="Hand Size" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Compute</button>
+        <button type="button" id="clear" class="btn btn-default">Reset</button>
+      </form>
+      <br>
+
+      <!-- Results -->
+      <div id="results" style="margin-bottom: .5em"></div>
+
+      <!-- Footer -->
+      <p>
+        <small><a href="#">Back to Top</a> | <a href="#" data-toggle="modal" data-target="#about">About</a></small>
+      </p>
+
+      <!-- Modals -->
+      <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">About Combo Chance</h5>
             </div>
-            <div class="form-group">
-                <label class="col-md-1 control-label" for="handSize" data-toggle="tooltip" title="Draw this many cards from the deck.">Hand&nbsp;Size</label>
-                <div class="col-md-2">
-                    <input class="form-control" type="number" id="handSize" placeholder="Hand Size"
-                           required>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Compute</button>
-            <button type="button" id="clear" class="btn btn-default">Reset</button>
-        </form>
-        <br>
-
-        <!-- Results -->
-        <div id="results" style="margin-bottom: .5em"></div>
-
-        <!-- Footer -->
-        <p>
-            <small><a href="#">Back to Top</a> | <a href="#" data-toggle="modal" data-target="#about">About</a></small>
-        </p>
-
-        <!-- Modals -->
-        <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">About Combo Chance</h5>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            When building decks in TCGs, one of the most important factors to consider is
-                            <em>consistency</em>. If your deck relies on opening with a certain combination of cards,
-                            how often will you do so? Combo Chance will help you find out.
-                        </p>
-                        <p>
-                            Inspired by these questions from Stack Exchange:
-                        </p>
-                        <ul>
-                            <li><a href="http://boardgames.stackexchange.com/q/7850">How do you calculate the likelihood
+            <div class="modal-body">
+              <p>
+                When building decks in TCGs, one of the most important factors to consider is
+                <em>consistency</em>. If your deck relies on opening with a certain combination of cards, how often will you do so? Combo Chance will help you find out.
+              </p>
+              <p>
+                Inspired by these questions from Stack Exchange:
+              </p>
+              <ul>
+                <li><a href="http://boardgames.stackexchange.com/q/7850">How do you calculate the likelihood
                                 of drawing certain cards in your opening hand?</a></li>
-                            <li><a href="http://boardgames.stackexchange.com/q/23212">What's the probability of having a
+                <li><a href="http://boardgames.stackexchange.com/q/23212">What's the probability of having a
                                 combo on the first turn in MTG?</a></li>
-                        </ul>
-                        <p>
-                            Try one of the examples to get started. Also, feel free to check it out on <a
-                                href="https://github.com/sudiamanj/combochance">GitHub</a> if you're interested in the
-                            source code.
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+              </ul>
+              <p>
+                Try one of the examples to get started. Also, feel free to check it out on <a href="https://github.com/sudiamanj/combochance">GitHub</a> if you're interested in the source code.
+              </p>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="modal fade" id="approximately" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Why is this chance approximate?</h5>
-                    </div>
-                    <div class="modal-body">
-                        Calculating this chance programmatically would require a ton of computing power, which may end
-                        up crashing your browser. In cases like this, Combo Chance changes up its strategy. Rather than
-                        relying on calculations, it generates a large number of randomized hands (~1000) and determines
-                        how many of them contains your combo. (This is known as a <a
-                            href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> simulation.)
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+      <div class="modal fade" id="approximately" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Why is this chance approximate?</h5>
             </div>
+            <div class="modal-body">
+              Calculating this chance programmatically would require a ton of computing power, which may end up crashing your browser. In cases like this, Combo Chance changes up its strategy. Rather than relying on calculations, it generates a large number of randomized
+              hands (~1000) and determines how many of them contains your combo. (This is known as a <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> simulation.)
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-
-<script type="text/javascript">$('[data-toggle="tooltip"]').tooltip();</script>
+  </div>
 </body>
+
 </html>
