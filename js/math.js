@@ -1,15 +1,15 @@
 /* global _, common */
 
-/** Maximum length of a power set is 2^MAX_N */
-const MAX_N = 26
+(function (window) {
+  /** Maximum length of a power set is 2^MAX_N */
+  const MAX_N = 26
 
-/** Maximum rows to compute for Pascal's Triangle */
-const MAX_PASCAL = 10000
+  /** Maximum rows to compute for Pascal's Triangle */
+  const MAX_PASCAL = 10000
 
-/** Number of trials to use for Monte Carlo simulation */
-const MONTE_CARLO_TRIALS = 1000;
+  /** Number of trials to use for Monte Carlo simulation */
+  const MONTE_CARLO_TRIALS = 1000
 
-(function () {
   var math = {}
 
   /**
@@ -243,4 +243,4 @@ const MONTE_CARLO_TRIALS = 1000;
   }
 
   window.math = math
-})()
+})(this)

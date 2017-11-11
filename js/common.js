@@ -1,6 +1,6 @@
 /* global _ */
 
-(function () {
+(function (window) {
   var common = {}
 
   /**
@@ -28,4 +28,4 @@
   }
 
   window.common = common
-})()
+})(this)

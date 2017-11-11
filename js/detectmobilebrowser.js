@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * jQuery.browser.mobile (http://detectmobilebrowser.com/)
  *
