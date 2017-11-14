@@ -1,6 +1,6 @@
-/* global _, common */
+/* eslint-env amd */
 
-(function (window) {
+define(['common', 'lodash'], function (common, _) {
   /** Maximum length of a power set is 2^MAX_N */
   const MAX_N = 26
 
@@ -242,5 +242,5 @@
     return successes / MONTE_CARLO_TRIALS
   }
 
-  window.math = math
-})(this)
+  return math
+})

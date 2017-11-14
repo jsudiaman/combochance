@@ -1,6 +1,6 @@
-/* global _ */
+/* eslint-env amd */
 
-(function (window) {
+define(['lodash'], function (_) {
   var common = {}
 
   /**
@@ -27,5 +27,5 @@
     }, 0)
   }
 
-  window.common = common
-})(this)
+  return common
+})

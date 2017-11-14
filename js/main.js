@@ -1,6 +1,7 @@
-/* global $, sessionStorage, common, _, math */
+/* global sessionStorage */
+/* eslint-env amd */
 
-(function () {
+define(['common', 'math', 'lodash', 'jquery', 'bootstrap', 'detectmobilebrowser'], function (common, math, _, $) {
   var nRows = 1
 
   /** Maximum deck size to process. */
@@ -273,4 +274,4 @@
       })
     })
   })
-})()
+})
