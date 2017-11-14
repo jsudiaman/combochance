@@ -1,6 +1,8 @@
 /* eslint-env amd */
 
-define(['lodash'], function (_) {
+define(function (require) {
+  var _ = require('lodash')
+
   var common = {}
 
   /**

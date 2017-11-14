@@ -1,11 +1,18 @@
 /* global sessionStorage */
 /* eslint-env amd */
 
-define(['common', 'math', 'lodash', 'jquery', 'bootstrap', 'detectmobilebrowser'], function (common, math, _, $) {
+define(function (require) {
+  var common = require('common')
+  var math = require('math')
+  var _ = require('lodash')
+  var $ = require('jquery')
+  require('bootstrap')
+  require('detectmobilebrowser')
+
   var nRows = 1
 
   /** Maximum deck size to process. */
-  const MAX_DECK_SIZE = 1000
+  var MAX_DECK_SIZE = 1000
 
   /**
    * Get all form data as an object.
@@ -46,7 +53,7 @@ define(['common', 'math', 'lodash', 'jquery', 'bootstrap', 'detectmobilebrowser'
    * Add a row.
    */
   function addRow () {
-    const row = nRows
+    var row = nRows
 
     $('#card' + row).html('<td><input type="text" id="name' + row + '" placeholder="Card Name" class="form-control"/></td>' +
       '<td><input type="number" id="aid' + row + '" class="form-control num"/></td>' +
@@ -83,7 +90,7 @@ define(['common', 'math', 'lodash', 'jquery', 'bootstrap', 'detectmobilebrowser'
    * @param data Form data to set
    */
   function setData (data) {
-    const numCards = data.cards.length || 1
+    var numCards = data.cards.length || 1
 
     // Add / remove rows
     while (nRows < numCards) {

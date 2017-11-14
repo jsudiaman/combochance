@@ -1,14 +1,17 @@
 /* eslint-env amd */
 
-define(['common', 'lodash'], function (common, _) {
+define(function (require) {
+  var common = require('common')
+  var _ = require('lodash')
+
   /** Maximum length of a power set is 2^MAX_N */
-  const MAX_N = 26
+  var MAX_N = 26
 
   /** Maximum rows to compute for Pascal's Triangle */
-  const MAX_PASCAL = 10000
+  var MAX_PASCAL = 10000
 
   /** Number of trials to use for Monte Carlo simulation */
-  const MONTE_CARLO_TRIALS = 1000
+  var MONTE_CARLO_TRIALS = 1000
 
   var math = {}
 
@@ -133,7 +136,7 @@ define(['common', 'lodash'], function (common, _) {
     }, 0)
 
     // Compute chance
-    const tmpCards = JSON.stringify(data.cards)
+    var tmpCards = JSON.stringify(data.cards)
     try {
       // Each node points back to a card
       var nodes = []
