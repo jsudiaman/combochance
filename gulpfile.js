@@ -11,7 +11,7 @@ gulp.task('browserify', function () {
 })
 
 gulp.task('concat-css', function () {
-  return gulp.src(['css/style.css', 'node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'])
+  return gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/css/bootstrap-theme.min.css', 'css/style.css'])
     .pipe(concat('bundle.css'))
     .pipe(gulp.dest('dist/css'))
 })
