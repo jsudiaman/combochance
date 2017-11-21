@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Neat tool for TCG players.",
   "scripts": {
-    "build": "browserify js/main.js -o bundle.js"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,10 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "browserify": "^14.5.0"
+    "browserify": "^14.5.0",
+    "gulp": "^3.9.1",
+    "gulp-bro": "^1.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2"
   }
 }
