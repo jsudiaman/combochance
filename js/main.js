@@ -1,13 +1,12 @@
 /* global sessionStorage */
-/* eslint-env amd */
 
-define(function (require) {
-  var common = require('common')
-  var math = require('math')
+(function () {
+  var common = require('./common.js')
+  var math = require('./math.js')
   var _ = require('lodash')
-  var $ = require('jquery')
+  var $ = global.jQuery = global.$ = require('jquery')
   require('bootstrap')
-  require('detectmobilebrowser')
+  require('./detectmobilebrowser.js')
 
   var nRows = 1
 
@@ -281,4 +280,4 @@ define(function (require) {
       })
     })
   })
-})
+})()

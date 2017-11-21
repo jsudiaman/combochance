@@ -1,7 +1,7 @@
 /* eslint-env amd */
 
-define(function (require) {
-  var common = require('common')
+(function () {
+  var common = require('./common.js')
   var _ = require('lodash')
 
   /** Maximum length of a power set is 2^MAX_N */
@@ -245,5 +245,5 @@ define(function (require) {
     return successes / MONTE_CARLO_TRIALS
   }
 
-  return math
-})
+  module.exports = math
+})()

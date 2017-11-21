@@ -1,0 +1,26 @@
+{
+  "name": "combochance",
+  "version": "1.0.0",
+  "description": "Neat tool for TCG players.",
+  "scripts": {
+    "build": "browserify js/main.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudiamanj/ComboChance.git"
+  },
+  "author": "Jonathan Sudiaman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sudiamanj/ComboChance/issues"
+  },
+  "homepage": "https://github.com/sudiamanj/ComboChance#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "browserify": "^14.5.0"
+  }
+}

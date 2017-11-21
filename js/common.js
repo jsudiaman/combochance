@@ -1,6 +1,4 @@
-/* eslint-env amd */
-
-define(function (require) {
+(function () {
   var _ = require('lodash')
 
   var common = {}
@@ -29,5 +27,5 @@ define(function (require) {
     }, 0)
   }
 
-  return common
-})
+  module.exports = common
+})()
