@@ -1,18 +1,28 @@
-var gulp = require('gulp')
-var bro = require('gulp-bro')
-var concat = require('gulp-concat')
-var rename = require('gulp-rename')
+const babelify = require('babelify')
+const bro = require('gulp-bro')
+const concat = require('gulp-concat')
+const gulp = require('gulp')
+const rename = require('gulp-rename')
+const uglifycss = require('gulp-uglifycss')
 
 gulp.task('browserify', function () {
   gulp.src('js/main.js')
-    .pipe(bro())
-    .pipe(rename('bundle.js'))
+    .pipe(bro({
+      transform: [
+        babelify.configure({ presets: ['env'] }),
+        [ 'uglifyify', { global: true } ]
+      ]
+    }))
+    .pipe(rename('bundle.min.js'))
     .pipe(gulp.dest('dist/js'))
 })
 
 gulp.task('concat-css', function () {
-  return gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/css/bootstrap-theme.min.css', 'css/style.css'])
-    .pipe(concat('bundle.css'))
+  gulp.src(['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/css/bootstrap-theme.min.css', 'css/style.css'])
+    .pipe(concat('bundle.min.css'))
+    .pipe(uglifycss({
+      'uglyComments': true
+    }))
     .pipe(gulp.dest('dist/css'))
 })
 
