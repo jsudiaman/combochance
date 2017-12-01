@@ -6,7 +6,7 @@ const rename = require('gulp-rename')
 const uglifycss = require('gulp-uglifycss')
 
 gulp.task('browserify', function () {
-  gulp.src('js/main.js')
+  gulp.src('js/index.js')
     .pipe(bro({
       transform: [
         babelify.configure({ presets: ['env'] }),
