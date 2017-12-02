@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Neat tool for TCG players.",
   "scripts": {
-    "build": "gulp"
+    "build": "gulp",
+    "clean": "gulp clean",
+    "lint": "standard --verbose | snazzy"
   },
   "repository": {
     "type": "git",
@@ -25,11 +27,14 @@
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-bro": "^1.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.2.2",
     "gulp-uglifycss": "^1.0.9",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3",
     "uglifyify": "^4.0.5"
   }
 }

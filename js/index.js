@@ -1,5 +1,5 @@
 // jQuery & plugins
-const $ = global.jQuery = global.$ = require('jquery')
+const $ = global.jQuery = require('jquery')
 require('bootstrap')
 require('./detectmobilebrowser.js')
 
