@@ -5,8 +5,6 @@ const MAX_N = 26                // Maximum length of a power set is 2^MAX_N
 const MAX_PASCAL = 10000        // Maximum rows to compute for Pascal's Triangle
 const MONTE_CARLO_TRIALS = 1000 // Number of trials to use for Monte Carlo simulation
 
-const math = {}
-
 /**
  * Compute the power set of the array.
  *
@@ -14,7 +12,7 @@ const math = {}
  * @param maxLength Maximum cardinality of subsets
  * @return {*[]} All possible subsets of the array
  */
-math.powerset = function (arr, maxLength) {
+exports.powerset = function (arr, maxLength) {
   let ps = [[]]
   if (maxLength === 0) {
     return ps
@@ -63,7 +61,7 @@ math.powerset = function (arr, maxLength) {
  * @param numRows Number of rows
  * @return {Array} 2D (NOT rectangular) array which represents Pascal's triangle
  */
-math.createPascalTriangle = function (numRows) {
+exports.createPascalTriangle = function (numRows) {
   numRows++
   const pascalTriangle = []
 
@@ -82,8 +80,8 @@ math.createPascalTriangle = function (numRows) {
   return pascalTriangle
 }
 
-let ptRows = 0
-let pascalTriangle = math.createPascalTriangle(ptRows)
+exports.ptRows = 0
+exports.pascalTriangle = exports.createPascalTriangle(exports.ptRows)
 
 /**
  * Compute n-choose-k.
@@ -92,7 +90,7 @@ let pascalTriangle = math.createPascalTriangle(ptRows)
  * @param k Number of elements to choose
  * @returns {number} Value of the binomial coefficient
  */
-math.choose = function (n, k) {
+exports.choose = function (n, k) {
   // Validation
   if (k > n) {
     return 0
@@ -105,11 +103,11 @@ math.choose = function (n, k) {
   }
 
   // Expand Pascal's Triangle, if necessary
-  if (n > ptRows) {
-    ptRows = n
-    pascalTriangle = math.createPascalTriangle(n)
+  if (n > this.ptRows) {
+    this.ptRows = n
+    this.pascalTriangle = this.createPascalTriangle(n)
   }
-  return pascalTriangle[n][k]
+  return this.pascalTriangle[n][k]
 }
 
 /**
@@ -121,7 +119,7 @@ math.choose = function (n, k) {
  * percent: Probability in percent form.
  * experimental: true if the probability was determined experimentally.
  */
-math.getChance = function (data) {
+exports.getChance = function (data) {
   // Obtain required data
   let prob = 0
   const freeCards = data.handSize - _.reduce(data.cards, function (acc, card) {
@@ -143,13 +141,13 @@ math.getChance = function (data) {
     // Monte Carlo if computation would be too expensive
     if (nodes.length > MAX_N && freeCards > 1) {
       return {
-        percent: getChance3(data) * 100,
+        percent: this.getChance3(data) * 100,
         experimental: true
       }
     }
 
     // Compute power set of nodes, but only keep elements of n <= freeCards
-    const ps = math.powerset(nodes, freeCards)
+    const ps = this.powerset(nodes, freeCards)
 
     // Loop through power set
     for (let k = 0; k < ps.length; k++) {
@@ -158,7 +156,7 @@ math.getChance = function (data) {
         // For each node, add one to its 'numRequired' value
         data.cards[nodeArr[l]].numRequired++
       }
-      prob += getChance2(data)
+      prob += this.getChance2(data)
       data.cards = JSON.parse(tmpCards) // Reset cards
     }
   } finally {
@@ -193,12 +191,12 @@ math.getChance = function (data) {
  * @param data Form data
  * @return {number} Probability in decimal form
  */
-function getChance2 (data) {
+exports.getChance2 = function (data) {
   // Use multiconstiate hypergeometric formula to compute chance
-  const num = _.reduce(data.cards, function (acc, card) {
-    return acc * math.choose(card.numInDeck, card.numRequired)
-  }, math.choose(data.deckSize - common.getSumInDeck(data), data.handSize - common.getSumRequired(data)))
-  const den = math.choose(data.deckSize, data.handSize)
+  const num = _.reduce(data.cards, (acc, card) => {
+    return acc * this.choose(card.numInDeck, card.numRequired)
+  }, this.choose(data.deckSize - common.getSumInDeck(data), data.handSize - common.getSumRequired(data)))
+  const den = this.choose(data.deckSize, data.handSize)
   return num / den
 }
 
@@ -209,7 +207,7 @@ function getChance2 (data) {
  * @param data Form data
  * @return {number} Probability in decimal form
  */
-function getChance3 (data) {
+exports.getChance3 = function (data) {
   // Define constiables
   let successes = 0
   const deck = []
@@ -237,5 +235,3 @@ function getChance3 (data) {
 
   return successes / MONTE_CARLO_TRIALS
 }
-
-module.exports = math

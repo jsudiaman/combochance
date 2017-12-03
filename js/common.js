@@ -1,14 +1,12 @@
 const _ = require('lodash')
 
-const common = {}
-
 /**
  * Get sum of "Amount Required" values in the table.
  *
  * @param data Form data
  * @returns {number} The sum
  */
-common.getSumRequired = function (data) {
+exports.getSumRequired = function (data) {
   return _.reduce(data.cards, function (acc, card) {
     return acc + card.numRequired
   }, 0)
@@ -20,10 +18,8 @@ common.getSumRequired = function (data) {
  * @param data Form data
  * @returns {number} The sum
  */
-common.getSumInDeck = function (data) {
+exports.getSumInDeck = function (data) {
   return _.reduce(data.cards, function (acc, card) {
     return acc + card.numInDeck
   }, 0)
 }
-
-module.exports = common
