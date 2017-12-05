@@ -1,10 +1,51 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>index.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-calculator.html">calculator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-calculator.html#.getChance">getChance</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-calculator.html#.getChance2">getChance2</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-calculator.html#.getChance3">getChance3</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-calculator.html#.getSumInDeck">getSumInDeck</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-calculator.html#.getSumRequired">getSumRequired</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-math.html">math</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#.choose">choose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#.createPascalTriangle">createPascalTriangle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#.powerset">powerset</a></span></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="index_.html">index</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.addRow">addRow</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.deleteRow">deleteRow</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.getData">getData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.handle">handle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.init">init</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.setData">setData</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * Front page.
  *
  * @namespace index
  */
 
-// jQuery & plugins
+// jQuery &amp; plugins
 const $ = global.jQuery = require('jquery');
 require('bootstrap');
 require('./detectmobilebrowser.js');
@@ -28,7 +69,7 @@ function getData () {
   data.handSize = parseInt($('#handSize').val());
   data.cards = [];
 
-  for (let i = 0; i < nRows; i++) {
+  for (let i = 0; i &lt; nRows; i++) {
     const name = $(`#name${i}`).val();
     const numInDeck = $(`#aid${i}`).val();
     const numRequired = $(`#ar${i}`).val();
@@ -50,7 +91,7 @@ function getData () {
  * @memberof index
  */
 function handle (e) {
-  $('#results').html(`<div class="alert alert-danger">${e}</div>`);
+  $('#results').html(`&lt;div class="alert alert-danger">${e}&lt;/div>`);
 }
 
 /**
@@ -61,9 +102,9 @@ function handle (e) {
 function addRow () {
   const row = nRows;
 
-  $(`#card${row}`).html(`<td><input type="text" id="name${row}" placeholder="Card Name" class="form-control"/></td>
-    <td><input type="number" id="aid${row}" class="form-control num"/></td>
-    <td><input type="number" id="ar${row}" class="form-control num"/></td>`);
+  $(`#card${row}`).html(`&lt;td>&lt;input type="text" id="name${row}" placeholder="Card Name" class="form-control"/>&lt;/td>
+    &lt;td>&lt;input type="number" id="aid${row}" class="form-control num"/>&lt;/td>
+    &lt;td>&lt;input type="number" id="ar${row}" class="form-control num"/>&lt;/td>`);
 
   // Session storage logic
   $(`#name${row}`).val(sessionStorage.getItem(`#name${row}`) || '').change(function () {
@@ -76,7 +117,7 @@ function addRow () {
     sessionStorage.setItem(`req${row}`, $(this).val());
   });
 
-  $('#tab_logic').append(`<tr id="card${row + 1}"></tr>`);
+  $('#tab_logic').append(`&lt;tr id="card${row + 1}">&lt;/tr>`);
   nRows++;
 }
 
@@ -102,7 +143,7 @@ function setData (data) {
   const numCards = data.cards.length || 1;
 
   // Add / remove rows
-  while (nRows < numCards) {
+  while (nRows &lt; numCards) {
     addRow();
   }
   while (nRows > numCards) {
@@ -110,7 +151,7 @@ function setData (data) {
   }
 
   // Modify rows
-  for (let i = 0; i < numCards; i++) {
+  for (let i = 0; i &lt; numCards; i++) {
     $(`#name${i}`).val(data.cards[i].name);
     $(`#aid${i}`).val(data.cards[i].numInDeck);
     $(`#ar${i}`).val(data.cards[i].numRequired);
@@ -142,7 +183,7 @@ function init () {
   $('[data-toggle="tooltip"]').tooltip();
 
   // Table
-  for (let i = 1; i < sessionStorage.getItem('rows') || 0; i++) {
+  for (let i = 1; i &lt; sessionStorage.getItem('rows') || 0; i++) {
     addRow();
   }
   $('#add_row').click(function () {
@@ -163,9 +204,9 @@ function init () {
     // Validation
     if (data.handSize > data.deckSize) {
       handle('Your hand size is bigger than your deck size.');
-    } else if (data.deckSize < calculator.getSumInDeck(data)) {
+    } else if (data.deckSize &lt; calculator.getSumInDeck(data)) {
       handle('Your deck size is too small, check your "Amount in Deck" values.');
-    } else if (data.handSize < calculator.getSumRequired(data)) {
+    } else if (data.handSize &lt; calculator.getSumRequired(data)) {
       handle('Your hand size is too small for this combo.');
     } else if (_.some(document.getElementsByClassName('num'), elem => elem.value === '')) {
       handle('Check your "Amount in Deck" and "Amount Required" values. One of them is not a number.');
@@ -179,8 +220,8 @@ function init () {
         jq.empty()
           .append('Combo: ')
           .append(_.map(data.cards, card => `${card.numRequired}x ${card.name || 'Unnamed Card'}`).join(', '))
-          .append(`<br>Deck Size: ${data.deckSize}, Cards in Hand: ${data.handSize}`)
-          .append(`<br><br>The chance of you pulling this off is ${obj.experimental ? '<a href="#" data-toggle="modal" data-target="#approximately">approximately</a> ' : ''}`)
+          .append(`&lt;br>Deck Size: ${data.deckSize}, Cards in Hand: ${data.handSize}`)
+          .append(`&lt;br>&lt;br>The chance of you pulling this off is ${obj.experimental ? '&lt;a href="#" data-toggle="modal" data-target="#approximately">approximately&lt;/a> ' : ''}`)
           .append(`${Number(obj.percent).toPrecision(3)}%.`);
       } catch (e) {
         handle(e);
@@ -290,3 +331,22 @@ function init () {
 }
 
 $(init);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Dec 04 2017 21:11:03 GMT-0500 (EST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

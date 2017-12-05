@@ -7,6 +7,7 @@
   <title>Combo Chance</title>
 
   <link rel="stylesheet" href="dist/css/bundle.min.css">
+  <script src="dist/js/bundle.min.js"></script>
 </head>
 
 <body>
@@ -127,7 +128,7 @@
               <h5 class="modal-title">Why is this chance approximate?</h5>
             </div>
             <div class="modal-body">
-              Calculating this chance programmatically would require a ton of computing power, which may end up crashing your browser. In cases like this, Combo Chance changes up its strategy. Rather than relying on calculations, it generates a large number of randomized hands (~1000) and determines how many of them contains your combo. (This is known as a <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> simulation.)
+              Calculating this chance programmatically would require a ton of computing power, which may end up crashing your browser. In cases like this, Combo Chance changes up its strategy. Rather than relying on calculations, it generates a large number of randomized hands (~10000) and determines how many of them contains your combo. (This is known as a <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> simulation.)
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -137,7 +138,6 @@
       </div>
     </div>
   </div>
-  <script src="dist/js/bundle.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>math.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-calculator.html">calculator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-calculator.html#.getChance">getChance</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-calculator.html#.getChance2">getChance2</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-calculator.html#.getChance3">getChance3</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-calculator.html#.getSumInDeck">getSumInDeck</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-calculator.html#.getSumRequired">getSumRequired</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-math.html">math</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#.choose">choose</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#.createPascalTriangle">createPascalTriangle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-math.html#.powerset">powerset</a></span></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="index_.html">index</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.addRow">addRow</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.deleteRow">deleteRow</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.getData">getData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.handle">handle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.init">init</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="index_.html#.setData">setData</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">math.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Math module.
+ *
+ * @module math
+ */
+const _ = require('lodash');
+
+/**
+ * Compute the power set of the array.
+ *
+ * @param {Array}  arr         An array
+ * @param {number} [maxLength] Maximum cardinality of subsets
+ * @return {Array[]} All possible subsets of the array
+ */
+exports.powerset = function (arr, maxLength) {
+  let ps = [[]];
+  if (maxLength === 0) {
+    return ps;
+  } else if (maxLength === 1) {
+    ps = ps.concat(_.map(arr, x => [x]));
+  } else {
+    for (let i = 0; i &lt; arr.length; i++) {
+      for (let j = 0, len = ps.length; j &lt; len; j++) {
+        if (typeof maxLength === 'undefined' || ps[j].length &lt; maxLength) {
+          ps.push(ps[j].concat(arr[i]));
+        }
+      }
+    }
+  }
+
+  // Return unique elements
+  return _.uniqWith(ps, (arr1, arr2) => {
+    // if the other array is a falsy value, return
+    if (!arr2) {
+      return false;
+    }
+
+    // compare lengths - can save a lot of time
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+
+    for (let i = 0, l = arr1.length; i &lt; l; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false;
+      }
+    }
+    return true;
+  });
+};
+
+/**
+ * Create Pascal's triangle with the specified amount of rows.
+ *
+ * @param {number} numRows Number of rows
+ * @return {Array[]} 2D (NOT rectangular) array which represents Pascal's triangle
+ */
+exports.createPascalTriangle = function (numRows) {
+  numRows++;
+  const pascalTriangle = [];
+
+  for (let i = 0; i &lt; numRows; i++) {
+    pascalTriangle[i] = new Array(i + 1);
+
+    for (let j = 0; j &lt; i + 1; j++) {
+      if (j === 0 || j === i) {
+        pascalTriangle[i][j] = 1;
+      } else {
+        pascalTriangle[i][j] = pascalTriangle[i - 1][j - 1] + pascalTriangle[i - 1][j];
+      }
+    }
+  }
+
+  return pascalTriangle;
+};
+
+/**
+ * Number of rows in the currently built Pascal's triangle.
+ *
+ * @type {number}
+ */
+exports.ptRows = 0;
+
+/**
+ * Currently built Pascal's triangle, used for calculating binomial coefficients.
+ *
+ * @type {Array[]}
+ */
+exports.pascalTriangle = exports.createPascalTriangle(exports.ptRows);
+
+/**
+ * Compute n-choose-k.
+ *
+ * @param {number} n Number of elements in total
+ * @param {number} k Number of elements to choose
+ * @returns {number} Value of the binomial coefficient
+ */
+exports.choose = function (n, k) {
+  // Validation
+  if (k > n) {
+    return 0;
+  }
+  if (n &lt; 0 || k &lt; 0) {
+    throw RangeError('Please use positive numbers.');
+  }
+
+  // Expand Pascal's Triangle, if necessary
+  if (n > this.ptRows) {
+    this.ptRows = n;
+    this.pascalTriangle = this.createPascalTriangle(n);
+  }
+  return this.pascalTriangle[n][k];
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Dec 04 2017 21:11:03 GMT-0500 (EST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

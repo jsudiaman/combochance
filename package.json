@@ -5,7 +5,9 @@
   "scripts": {
     "build": "gulp",
     "clean": "gulp clean",
-    "lint": "standard --verbose | snazzy"
+    "fix": "semistandard js/*.js --verbose --fix | snazzy",
+    "generate-docs": "jsdoc --configure .jsdoc.json --verbose",
+    "lint": "semistandard js/*.js --verbose | snazzy"
   },
   "repository": {
     "type": "git",
@@ -33,8 +35,10 @@
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.2.2",
     "gulp-uglifycss": "^1.0.9",
+    "jsdoc": "^3.5.5",
+    "minami": "^1.2.3",
+    "semistandard": "^11.0.0",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.3",
     "uglifyify": "^4.0.5"
   }
 }
