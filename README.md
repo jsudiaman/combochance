@@ -9,7 +9,7 @@ In Agent Fairies, opening with [Valhalla, Hall of the Fallen](http://www.db.yugi
 
 Let's say that your deck has 3 Valhallas and 3 Kristyas. To perform this combo, you'll only need one of each (but more is okay). Also, your deck has 40 cards in total, and the opening hand size in Yu-Gi-Oh! is 5 cards. Simply fill out that information, press "Compute", and voila:
 
-<img src="https://raw.githubusercontent.com/sudiamanj/combochance/master/img/screenshot.png" alt="Screenshot" width="800" height="480">
+![Screenshot](https://raw.githubusercontent.com/sudiamanj/combochance/master/img/screenshot.png)
 
 According to Combo Chance, you will open Valhalla + Kristya about once in every 10 duels.
 
