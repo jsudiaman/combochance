@@ -40,5 +40,10 @@
     "semistandard": "^11.0.0",
     "snazzy": "^7.0.0",
     "uglifyify": "^4.0.5"
+  },
+  "semistandard": {
+    "ignore": [
+      "js/detectmobilebrowser.js"
+    ]
   }
 }
