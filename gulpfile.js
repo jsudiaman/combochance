@@ -1,7 +1,6 @@
 const babelify = require('babelify');
 const bro = require('gulp-bro');
 const concat = require('gulp-concat');
-const del = require('del');
 const gulp = require('gulp');
 const insert = require('gulp-insert');
 const rename = require('gulp-rename');
@@ -33,14 +32,10 @@ gulp.task('copy-fonts', function () {
     .pipe(gulp.dest('dist/fonts/'));
 });
 
-gulp.task('clean', function () {
-  return del(['dist']);
-});
-
 gulp.task('es6ify-jquery-plugins', function () {
   return gulp.src(['js/3rdparty/detectmobilebrowser.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
     .pipe(concat('jqueryplugins.js'))
-    .pipe(insert.prepend(`import jQuery from 'jquery'`))
+    .pipe(insert.prepend(`import jQuery from 'jquery';`))
     .pipe(gulp.dest('js/'));
 });
 
