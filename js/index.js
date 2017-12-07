@@ -4,15 +4,15 @@
  * @namespace index
  */
 import _ from 'lodash';
-import * as calculator from './calculator';
 import $ from 'jquery';
+
+import * as calculator from './calculator';
 import './jqueryplugins';
 
 // Browser globals
-const sessionStorage = window.sessionStorage;
-const scrollTo = window.scrollTo;
+const { scrollTo, sessionStorage } = window;
 
-let nRows = 1;              // Number of rows.
+let nRows = 1; // Number of rows.
 const MAX_DECK_SIZE = 1000; // Maximum deck size to process.
 
 /**
@@ -21,21 +21,21 @@ const MAX_DECK_SIZE = 1000; // Maximum deck size to process.
  * @returns {Data} Object which contains the form data.
  * @memberof index
  */
-function getData () {
+function getData() {
   const data = {};
-  data.deckSize = parseInt($('#deckSize').val());
-  data.handSize = parseInt($('#handSize').val());
+  data.deckSize = parseInt($('#deckSize').val(), 10);
+  data.handSize = parseInt($('#handSize').val(), 10);
   data.cards = [];
 
-  for (let i = 0; i < nRows; i++) {
+  for (let i = 0; i < nRows; i += 1) {
     const name = $(`#name${i}`).val();
     const numInDeck = $(`#aid${i}`).val();
     const numRequired = $(`#ar${i}`).val();
 
     data.cards.push({
-      name: name,
-      numInDeck: parseInt(numInDeck),
-      numRequired: parseInt(numRequired)
+      name,
+      numInDeck: parseInt(numInDeck, 10),
+      numRequired: parseInt(numRequired, 10),
     });
   }
 
@@ -48,7 +48,7 @@ function getData () {
  * @param {Error} e Error to handle
  * @memberof index
  */
-function handle (e) {
+function handle(e) {
   $('#results').html(`<div class="alert alert-danger">${e}</div>`);
 }
 
@@ -57,7 +57,7 @@ function handle (e) {
  *
  * @memberof index
  */
-function addRow () {
+function addRow() {
   const row = nRows;
 
   $(`#card${row}`).html(`<td><input type="text" id="name${row}" placeholder="Card Name" class="form-control"/></td>
@@ -65,18 +65,18 @@ function addRow () {
     <td><input type="number" id="ar${row}" class="form-control num"/></td>`);
 
   // Session storage logic
-  $(`#name${row}`).val(sessionStorage.getItem(`#name${row}`) || '').change(function () {
+  $(`#name${row}`).val(sessionStorage.getItem(`#name${row}`) || '').change(function setName() {
     sessionStorage.setItem(`#name${row}`, $(this).val());
   });
-  $(`#aid${row}`).val(sessionStorage.getItem(`id${row}`) || 1).change(function () {
+  $(`#aid${row}`).val(sessionStorage.getItem(`id${row}`) || 1).change(function setId() {
     sessionStorage.setItem(`id${row}`, $(this).val());
   });
-  $(`#ar${row}`).val(sessionStorage.getItem(`req${row}`) || 1).change(function () {
+  $(`#ar${row}`).val(sessionStorage.getItem(`req${row}`) || 1).change(function setReq() {
     sessionStorage.setItem(`req${row}`, $(this).val());
   });
 
   $('#tab_logic').append(`<tr id="card${row + 1}"></tr>`);
-  nRows++;
+  nRows += 1;
 }
 
 /**
@@ -84,10 +84,10 @@ function addRow () {
  *
  * @memberof index
  */
-function deleteRow () {
+function deleteRow() {
   if (nRows > 1) {
     $(`#card${nRows - 1}`).html('');
-    nRows--;
+    nRows -= 1;
   }
 }
 
@@ -97,7 +97,7 @@ function deleteRow () {
  * @param {Data} data Form data to set
  * @memberof index
  */
-function setData (data) {
+function setData(data) {
   const numCards = data.cards.length || 1;
 
   // Add / remove rows
@@ -109,7 +109,7 @@ function setData (data) {
   }
 
   // Modify rows
-  for (let i = 0; i < numCards; i++) {
+  for (let i = 0; i < numCards; i += 1) {
     $(`#name${i}`).val(data.cards[i].name);
     $(`#aid${i}`).val(data.cards[i].numInDeck);
     $(`#ar${i}`).val(data.cards[i].numRequired);
@@ -133,7 +133,7 @@ function setData (data) {
  *
  * @memberof index
  */
-function init () {
+function init() {
   // Collapse
   $('.collapse').collapse();
 
@@ -141,20 +141,20 @@ function init () {
   $('[data-toggle="tooltip"]').tooltip();
 
   // Table
-  for (let i = 1; i < sessionStorage.getItem('rows') || 0; i++) {
+  for (let i = 1; i < sessionStorage.getItem('rows') || 0; i += 1) {
     addRow();
   }
-  $('#add_row').click(function () {
+  $('#add_row').click(() => {
     addRow();
     sessionStorage.setItem('rows', nRows);
   });
-  $('#delete_row').click(function () {
+  $('#delete_row').click(() => {
     deleteRow();
     sessionStorage.setItem('rows', nRows);
   });
 
   // Form
-  $('#primaryForm').submit(function (event) {
+  $('#primaryForm').submit((event) => {
     event.preventDefault();
 
     const data = getData();
@@ -190,12 +190,13 @@ function init () {
       }
     }
   });
-  $('#clear').click(function () {
-    $('input').each(function (index, elem) {
-      if (/^(aid|ar).*$/.test(elem.id)) {
-        elem.value = 1;
+  $('#clear').click(() => {
+    $('input').each((index, elem) => {
+      const $elem = elem;
+      if (/^(aid|ar).*$/.test($elem.id)) {
+        $elem.value = 1;
       } else {
-        elem.value = '';
+        $elem.value = '';
       }
       while (nRows > 1) {
         deleteRow();
@@ -206,84 +207,84 @@ function init () {
   });
 
   // Examples
-  $('#exodia').click(function (event) {
+  $('#exodia').click((event) => {
     event.preventDefault();
     setData({
-      'deckSize': 40,
-      'handSize': 5,
-      'cards': [{
-        'name': 'Exodia the Forbidden One',
-        'numInDeck': 1,
-        'numRequired': 1
+      deckSize: 40,
+      handSize: 5,
+      cards: [{
+        name: 'Exodia the Forbidden One',
+        numInDeck: 1,
+        numRequired: 1,
       }, {
-        'name': 'Right Leg of the Forbidden One',
-        'numInDeck': 1,
-        'numRequired': 1
+        name: 'Right Leg of the Forbidden One',
+        numInDeck: 1,
+        numRequired: 1,
       }, {
-        'name': 'Left Leg of the Forbidden One',
-        'numInDeck': 1,
-        'numRequired': 1
+        name: 'Left Leg of the Forbidden One',
+        numInDeck: 1,
+        numRequired: 1,
       }, {
-        'name': 'Right Arm of the Forbidden One',
-        'numInDeck': 1,
-        'numRequired': 1
+        name: 'Right Arm of the Forbidden One',
+        numInDeck: 1,
+        numRequired: 1,
       }, {
-        'name': 'Left Arm of the Forbidden One',
-        'numInDeck': 1,
-        'numRequired': 1
-      }]
+        name: 'Left Arm of the Forbidden One',
+        numInDeck: 1,
+        numRequired: 1,
+      }],
     });
   });
-  $('#channelFireball').click(function (event) {
+  $('#channelFireball').click((event) => {
     event.preventDefault();
     setData({
-      'deckSize': 60,
-      'handSize': 7,
-      'cards': [{
-        'name': 'Black Lotus',
-        'numInDeck': 1,
-        'numRequired': 1
+      deckSize: 60,
+      handSize: 7,
+      cards: [{
+        name: 'Black Lotus',
+        numInDeck: 1,
+        numRequired: 1,
       }, {
-        'name': 'Channel',
-        'numInDeck': 1,
-        'numRequired': 1
+        name: 'Channel',
+        numInDeck: 1,
+        numRequired: 1,
       }, {
-        'name': 'Fireball',
-        'numInDeck': 4,
-        'numRequired': 1
+        name: 'Fireball',
+        numInDeck: 4,
+        numRequired: 1,
       }, {
-        'name': 'Mountain',
-        'numInDeck': 24,
-        'numRequired': 1
-      }]
+        name: 'Mountain',
+        numInDeck: 24,
+        numRequired: 1,
+      }],
     });
   });
-  $('#leyline').click(function (event) {
+  $('#leyline').click((event) => {
     event.preventDefault();
     setData({
-      'deckSize': 60,
-      'handSize': 7,
-      'cards': [{
-        'name': 'Leyline of Sanctity',
-        'numInDeck': 4,
-        'numRequired': 1
-      }]
+      deckSize: 60,
+      handSize: 7,
+      cards: [{
+        name: 'Leyline of Sanctity',
+        numInDeck: 4,
+        numRequired: 1,
+      }],
     });
   });
-  $('#birdsOfParadise').click(function (event) {
+  $('#birdsOfParadise').click((event) => {
     event.preventDefault();
     setData({
-      'deckSize': 60,
-      'handSize': 7,
-      'cards': [{
-        'name': 'Birds of Paradise',
-        'numInDeck': 4,
-        'numRequired': 1
+      deckSize: 60,
+      handSize: 7,
+      cards: [{
+        name: 'Birds of Paradise',
+        numInDeck: 4,
+        numRequired: 1,
       }, {
-        'name': 'Forest',
-        'numInDeck': 24,
-        'numRequired': 1
-      }]
+        name: 'Forest',
+        numInDeck: 24,
+        numRequired: 1,
+      }],
     });
   });
 }

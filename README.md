@@ -1,7 +1,7 @@
 # Combo Chance
 ![Combo Chance](https://raw.githubusercontent.com/sudiamanj/ComboChance/master/img/logo.png)
 
-[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard) [![JSDoc](https://img.shields.io/badge/jsdoc-html-blue.svg?style=flat-square)](http://sudicode.com/combochance/docs/combochance/1.0.0/)
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-airbnb-brightgreen.svg)](https://github.com/airbnb/javascript) [![JSDoc](https://img.shields.io/badge/jsdoc-html-blue.svg)](http://sudicode.com/combochance/docs/combochance/1.0.0/)
 
 Suppose that you're a Yu-Gi-Oh! player who runs an Agent Fairy deck. (I understand that you may not be familiar with Yu-Gi-Oh!, and that's okay. Combo Chance works with all kinds of TCGs.)
 

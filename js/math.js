@@ -12,15 +12,15 @@ import _ from 'lodash';
  * @param {number} [maxLength] Maximum cardinality of subsets
  * @return {Array[]} All possible subsets of the array
  */
-export function powerset (arr, maxLength) {
+export function powerset(arr, maxLength) {
   let ps = [[]];
   if (maxLength === 0) {
     return ps;
   } else if (maxLength === 1) {
     ps = ps.concat(_.map(arr, x => [x]));
   } else {
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = 0, len = ps.length; j < len; j++) {
+    for (let i = 0; i < arr.length; i += 1) {
+      for (let j = 0, len = ps.length; j < len; j += 1) {
         if (typeof maxLength === 'undefined' || ps[j].length < maxLength) {
           ps.push(ps[j].concat(arr[i]));
         }
@@ -40,7 +40,7 @@ export function powerset (arr, maxLength) {
       return false;
     }
 
-    for (let i = 0, l = arr1.length; i < l; i++) {
+    for (let i = 0, l = arr1.length; i < l; i += 1) {
       if (arr1[i] !== arr2[i]) {
         return false;
       }
@@ -55,14 +55,13 @@ export function powerset (arr, maxLength) {
  * @param {number} numRows Number of rows
  * @return {Array[]} 2D (NOT rectangular) array which represents Pascal's triangle
  */
-export function createPascalTriangle (numRows) {
-  numRows++;
+export function createPascalTriangle(numRows) {
   const pascalTriangle = [];
 
-  for (let i = 0; i < numRows; i++) {
+  for (let i = 0; i < numRows + 1; i += 1) {
     pascalTriangle[i] = new Array(i + 1);
 
-    for (let j = 0; j < i + 1; j++) {
+    for (let j = 0; j < i + 1; j += 1) {
       if (j === 0 || j === i) {
         pascalTriangle[i][j] = 1;
       } else {
@@ -97,7 +96,7 @@ let pascalTriangle = createPascalTriangle(ptRows);
  * @param {number} k Number of elements to choose
  * @returns {number} Value of the binomial coefficient
  */
-export function choose (n, k) {
+export function choose(n, k) {
   // Validation
   if (k > n) {
     return 0;

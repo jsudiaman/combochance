@@ -4,8 +4,8 @@
   "description": "Neat tool for TCG players.",
   "scripts": {
     "build": "gulp jquery-plugins && gulp && jsdoc --configure .jsdoc.json --verbose",
-    "fix": "semistandard js/*.js --verbose --fix | snazzy",
-    "lint": "semistandard js/*.js --verbose | snazzy"
+    "fix": "eslint . --fix",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/sudiamanj/ComboChance#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "eslint": "^4.12.1",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4"
   },
@@ -27,6 +28,8 @@
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "gulp": "^3.9.1",
     "gulp-bro": "^1.0.2",
     "gulp-concat": "^2.6.1",
@@ -35,14 +38,12 @@
     "gulp-uglifycss": "^1.0.9",
     "jsdoc": "^3.5.5",
     "minami": "^1.2.3",
-    "semistandard": "^11.0.0",
-    "snazzy": "^7.0.0",
     "uglifyify": "^4.0.5"
   },
-  "semistandard": {
-    "ignore": [
-      "js/3rdparty/*.js",
-      "jqueryplugins.js"
-    ]
-  }
+  "eslintIgnore": [
+    "/js/vendor/*",
+    "jqueryplugins.js",
+    "/dist/*",
+    "/docs/*"
+  ]
 }
