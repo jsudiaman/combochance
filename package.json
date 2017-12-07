@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Neat tool for TCG players.",
   "scripts": {
-    "build": "gulp",
+    "build": "gulp jquery-plugins && gulp && jsdoc --configure .jsdoc.json --verbose",
     "fix": "semistandard js/*.js --verbose --fix | snazzy",
-    "generate-docs": "jsdoc --configure .jsdoc.json --verbose",
     "lint": "semistandard js/*.js --verbose | snazzy"
   },
   "repository": {

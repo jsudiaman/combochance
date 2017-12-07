@@ -32,11 +32,11 @@ gulp.task('copy-fonts', function () {
     .pipe(gulp.dest('dist/fonts/'));
 });
 
-gulp.task('es6ify-jquery-plugins', function () {
+gulp.task('jquery-plugins', function () {
   return gulp.src(['js/3rdparty/detectmobilebrowser.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
     .pipe(concat('jqueryplugins.js'))
     .pipe(insert.prepend(`import jQuery from 'jquery';`))
     .pipe(gulp.dest('js/'));
 });
 
-gulp.task('default', ['browserify', 'concat-css', 'copy-fonts', 'es6ify-jquery-plugins']);
+gulp.task('default', ['browserify', 'concat-css', 'copy-fonts']);
