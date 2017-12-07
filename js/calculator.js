@@ -3,8 +3,8 @@
  *
  * @module calculator
  */
-const _ = require('lodash');
-const math = require('./math.js');
+import _ from 'lodash';
+import * as math from './math';
 
 const MAX_N = 26;                 // Maximum length of a power set is 2^MAX_N
 const MONTE_CARLO_TRIALS = 10000; // Number of trials to use for Monte Carlo simulation
@@ -15,9 +15,9 @@ const MONTE_CARLO_TRIALS = 10000; // Number of trials to use for Monte Carlo sim
  * @param {Data} data Form data
  * @returns {number} The sum
  */
-exports.getSumRequired = function (data) {
+export function getSumRequired (data) {
   return _.reduce(data.cards, (acc, card) => acc + card.numRequired, 0);
-};
+}
 
 /**
  * Get sum of "Amount in Deck" values in the table.
@@ -25,9 +25,9 @@ exports.getSumRequired = function (data) {
  * @param {Data} data Form data
  * @returns {number} The sum
  */
-exports.getSumInDeck = function (data) {
+export function getSumInDeck (data) {
   return _.reduce(data.cards, (acc, card) => acc + card.numInDeck, 0);
-};
+}
 
 /**
  * Compute the chance of the combo (given by form data). Accounts for the possibility of having more than required.
@@ -35,10 +35,10 @@ exports.getSumInDeck = function (data) {
  * @param {Data} data Form data
  * @return {Chance} The chance
  */
-exports.getChance = function (data) {
+export function getChance (data) {
   // Obtain required data
   let prob = 0;
-  const freeCards = data.handSize - this.getSumRequired(data);
+  const freeCards = data.handSize - getSumRequired(data);
 
   // Compute chance
   const tmpCards = JSON.stringify(data.cards);
@@ -55,7 +55,7 @@ exports.getChance = function (data) {
     // Monte Carlo if computation would be too expensive
     if (nodes.length > MAX_N && freeCards > 1) {
       return {
-        percent: this.getChance3(data) * 100,
+        percent: getChance3(data) * 100,
         experimental: true
       };
     }
@@ -70,7 +70,7 @@ exports.getChance = function (data) {
         // For each node, add one to its 'numRequired' value
         data.cards[nodeArr[l]].numRequired++;
       }
-      prob += this.getChance2(data);
+      prob += getChance2(data);
       data.cards = JSON.parse(tmpCards); // Reset cards
     }
   } finally {
@@ -97,22 +97,23 @@ exports.getChance = function (data) {
       experimental: experimental
     };
   }
-};
+}
 
 /**
  * Compute the chance of the given combo, with EXACT amount required (no more, no less).
  *
  * @param {Data} data Form data
  * @return {number} Probability in decimal form
+ * @private
  */
-exports.getChance2 = function (data) {
+function getChance2 (data) {
   // Use multivariate hypergeometric formula to compute chance
   const num = _.reduce(data.cards, (acc, card) => {
     return acc * math.choose(card.numInDeck, card.numRequired);
-  }, math.choose(data.deckSize - this.getSumInDeck(data), data.handSize - this.getSumRequired(data)));
+  }, math.choose(data.deckSize - getSumInDeck(data), data.handSize - getSumRequired(data)));
   const den = math.choose(data.deckSize, data.handSize);
   return num / den;
-};
+}
 
 /**
  * Compute the chance of the given combo using Monte Carlo method. (Used if standard computation would require
@@ -120,8 +121,9 @@ exports.getChance2 = function (data) {
  *
  * @param {Data} data Form data
  * @return {number} Probability in decimal form
+ * @private
  */
-exports.getChance3 = function (data) {
+function getChance3 (data) {
   // Define variables
   let successes = 0;
   const deck = [];
@@ -148,4 +150,4 @@ exports.getChance3 = function (data) {
   }
 
   return successes / MONTE_CARLO_TRIALS;
-};
+}

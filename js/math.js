@@ -3,7 +3,7 @@
  *
  * @module math
  */
-const _ = require('lodash');
+import _ from 'lodash';
 
 /**
  * Compute the power set of the array.
@@ -12,7 +12,7 @@ const _ = require('lodash');
  * @param {number} [maxLength] Maximum cardinality of subsets
  * @return {Array[]} All possible subsets of the array
  */
-exports.powerset = function (arr, maxLength) {
+export function powerset (arr, maxLength) {
   let ps = [[]];
   if (maxLength === 0) {
     return ps;
@@ -47,7 +47,7 @@ exports.powerset = function (arr, maxLength) {
     }
     return true;
   });
-};
+}
 
 /**
  * Create Pascal's triangle with the specified amount of rows.
@@ -55,7 +55,7 @@ exports.powerset = function (arr, maxLength) {
  * @param {number} numRows Number of rows
  * @return {Array[]} 2D (NOT rectangular) array which represents Pascal's triangle
  */
-exports.createPascalTriangle = function (numRows) {
+export function createPascalTriangle (numRows) {
   numRows++;
   const pascalTriangle = [];
 
@@ -72,21 +72,23 @@ exports.createPascalTriangle = function (numRows) {
   }
 
   return pascalTriangle;
-};
+}
 
 /**
  * Number of rows in the currently built Pascal's triangle.
  *
  * @type {number}
+ * @private
  */
-exports.ptRows = 0;
+let ptRows = 0;
 
 /**
  * Currently built Pascal's triangle, used for calculating binomial coefficients.
  *
  * @type {Array[]}
+ * @private
  */
-exports.pascalTriangle = exports.createPascalTriangle(exports.ptRows);
+let pascalTriangle = createPascalTriangle(ptRows);
 
 /**
  * Compute n-choose-k.
@@ -95,7 +97,7 @@ exports.pascalTriangle = exports.createPascalTriangle(exports.ptRows);
  * @param {number} k Number of elements to choose
  * @returns {number} Value of the binomial coefficient
  */
-exports.choose = function (n, k) {
+export function choose (n, k) {
   // Validation
   if (k > n) {
     return 0;
@@ -105,9 +107,9 @@ exports.choose = function (n, k) {
   }
 
   // Expand Pascal's Triangle, if necessary
-  if (n > this.ptRows) {
-    this.ptRows = n;
-    this.pascalTriangle = this.createPascalTriangle(n);
+  if (n > ptRows) {
+    ptRows = n;
+    pascalTriangle = createPascalTriangle(n);
   }
-  return this.pascalTriangle[n][k];
-};
+  return pascalTriangle[n][k];
+}

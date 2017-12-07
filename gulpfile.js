@@ -3,6 +3,7 @@ const bro = require('gulp-bro');
 const concat = require('gulp-concat');
 const del = require('del');
 const gulp = require('gulp');
+const insert = require('gulp-insert');
 const rename = require('gulp-rename');
 const uglifycss = require('gulp-uglifycss');
 
@@ -36,4 +37,11 @@ gulp.task('clean', function () {
   return del(['dist']);
 });
 
-gulp.task('default', ['browserify', 'concat-css', 'copy-fonts']);
+gulp.task('es6ify-jquery-plugins', function () {
+  return gulp.src(['js/3rdparty/detectmobilebrowser.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
+    .pipe(concat('jqueryplugins.js'))
+    .pipe(insert.wrap('export default function(jQuery){', '}'))
+    .pipe(gulp.dest('js/'));
+});
+
+gulp.task('default', ['browserify', 'concat-css', 'copy-fonts', 'es6ify-jquery-plugins']);

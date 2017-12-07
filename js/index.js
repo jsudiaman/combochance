@@ -1,17 +1,19 @@
 /**
- * Front page.
+ * Web page.
  *
  * @namespace index
  */
+import _ from 'lodash';
+import * as calculator from './calculator';
+import $ from 'jquery';
+import jqueryPlugins from './jqueryplugins';
 
-// jQuery & plugins
-const $ = global.jQuery = require('jquery');
-require('bootstrap');
-require('./detectmobilebrowser.js');
+// Initialize jQuery plugins
+jqueryPlugins($);
 
-const _ = require('lodash');
-const calculator = require('./calculator.js');
+// Browser globals
 const sessionStorage = window.sessionStorage;
+const scrollTo = window.scrollTo;
 
 let nRows = 1;              // Number of rows.
 const MAX_DECK_SIZE = 1000; // Maximum deck size to process.
@@ -186,7 +188,7 @@ function init () {
         handle(e);
       } finally {
         if (!$.browser.mobile) {
-          window.scrollTo(0, document.body.scrollHeight);
+          scrollTo(0, document.body.scrollHeight);
         }
       }
     }
