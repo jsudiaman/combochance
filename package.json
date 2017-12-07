@@ -5,7 +5,8 @@
   "scripts": {
     "build": "gulp jquery-plugins && gulp && jsdoc --configure .jsdoc.json --verbose",
     "fix": "eslint . --fix",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
