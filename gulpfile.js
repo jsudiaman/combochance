@@ -40,7 +40,7 @@ gulp.task('clean', function () {
 gulp.task('es6ify-jquery-plugins', function () {
   return gulp.src(['js/3rdparty/detectmobilebrowser.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
     .pipe(concat('jqueryplugins.js'))
-    .pipe(insert.wrap('export default function(jQuery){', '}'))
+    .pipe(insert.prepend(`import jQuery from 'jquery'`))
     .pipe(gulp.dest('js/'));
 });
 

@@ -6,10 +6,7 @@
 import _ from 'lodash';
 import * as calculator from './calculator';
 import $ from 'jquery';
-import jqueryPlugins from './jqueryplugins';
-
-// Initialize jQuery plugins
-jqueryPlugins($);
+import './jqueryplugins';
 
 // Browser globals
 const sessionStorage = window.sessionStorage;
