@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "Neat tool for TCG players.",
   "scripts": {
-    "build": "gulp jquery-plugins && gulp && jsdoc --configure .jsdoc.json --verbose",
-    "fix": "eslint . --fix",
-    "lint": "eslint .",
-    "watch": "gulp watch"
+    "build": "gulp jquery-plugins browserify concat-css copy-fonts && jsdoc --configure .jsdoc.json --verbose",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -20,13 +18,13 @@
   "homepage": "https://github.com/sudiamanj/ComboChance#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "eslint": "^4.12.1",
+    "eslint": "^4.19.1",
     "jquery": "^3.2.1",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
     "eslint-config-airbnb-base": "^12.1.0",
