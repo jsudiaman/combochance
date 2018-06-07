@@ -1,7 +1,7 @@
 # Combo Chance
 ![Combo Chance](/img/logo.png)
 
-[![js-airbnb-style](https://img.shields.io/badge/code%20style-airbnb-brightgreen.svg)](https://github.com/airbnb/javascript) [![JSDoc](https://img.shields.io/badge/jsdoc-html-blue.svg)](http://jsudiaman.gitlab.io/combochance/docs/combochance/1.0.0/)
+[![js-airbnb-style](https://img.shields.io/badge/code%20style-airbnb-brightgreen.svg)](https://github.com/airbnb/javascript) [![JSDoc](https://img.shields.io/badge/jsdoc-html-blue.svg)](http://combochance.sudicode.com/docs/combochance/1.0.0/)
 
 Suppose that you're a Yu-Gi-Oh! player who runs an Agent Fairy deck. (I understand that you may not be familiar with Yu-Gi-Oh!, and that's okay. Combo Chance works with all kinds of TCGs.)
 
@@ -13,4 +13,4 @@ Let's say that your deck has 3 Valhallas and 3 Kristyas. To perform this combo, 
 
 According to Combo Chance, you will open Valhalla + Kristya about once in every 10 duels.
 
-So, got a combo in mind? [Give it a try!](http://jsudiaman.gitlab.io/combochance)
+So, got a combo in mind? [Give it a try!](http://combochance.sudicode.com)
