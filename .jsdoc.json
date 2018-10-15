@@ -8,7 +8,7 @@
     "plugins/markdown"
   ],
   "opts": {
-    "destination": "./docs/",
+    "destination": "./public/docs/",
     "encoding": "utf8",
     "template": "./node_modules/minami"
   },

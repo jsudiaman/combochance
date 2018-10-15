@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Neat tool for TCG players.",
   "scripts": {
-    "build": "gulp jquery-plugins browserify concat-css copy-fonts && jsdoc --configure .jsdoc.json --verbose",
-    "lint": "eslint ."
+    "build": "gulp build",
+    "docs": "jsdoc --configure .jsdoc.json --verbose",
+    "lint": "eslint .",
+    "deploy": "npm run lint && npm run build && npm run docs",
+    "prestart": "npm run deploy",
+    "start": "http-server"
   },
   "repository": {
     "type": "git",
@@ -19,6 +23,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "eslint": "^4.19.1",
+    "http-server": "^0.11.1",
     "jquery": "^3.2.1",
     "lodash": "^4.17.10"
   },
@@ -42,7 +47,6 @@
   "eslintIgnore": [
     "/js/vendor/*",
     "jqueryplugins.js",
-    "/dist/*",
-    "/docs/*"
+    "/public/*"
   ]
 }

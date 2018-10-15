@@ -4,11 +4,7 @@ pages:
   stage: deploy
   script:
   - npm install
-  - npm run build
-  - npm run lint
-  - mkdir .public
-  - cp -r * .public
-  - mv .public public
+  - npm run deploy
   artifacts:
     paths:
     - public

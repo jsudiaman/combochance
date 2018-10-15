@@ -7,6 +7,7 @@ import _ from 'lodash';
 import $ from 'jquery';
 
 import * as calculator from './calculator';
+// eslint-disable-next-line import/no-unresolved, import/extensions
 import './jqueryplugins';
 
 // Browser globals
