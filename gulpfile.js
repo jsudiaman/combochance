@@ -37,5 +37,4 @@ gulp.task('jquery-plugins', () => gulp.src(['js/vendor/detectmobilebrowser.js', 
   .pipe(insert.prepend('import jQuery from \'jquery\';'))
   .pipe(gulp.dest('js/')));
 
-
 gulp.task('build', ['browserify', 'concat-css', 'copy-fonts', 'copy-images', 'copy-index']);
