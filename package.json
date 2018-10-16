@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sudiamanj/ComboChance.git"
+    "url": "git+https://gitlab.com/jsudiaman/combochance.git"
   },
   "author": "Jonathan Sudiaman",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sudiamanj/ComboChance/issues"
+    "url": "https://gitlab.com/jsudiaman/combochance/issues"
   },
-  "homepage": "https://github.com/sudiamanj/ComboChance#readme",
+  "homepage": "http://combochance.sudicode.com/",
   "dependencies": {
     "bootstrap": "^3.3.7",
     "eslint": "^4.19.1",
