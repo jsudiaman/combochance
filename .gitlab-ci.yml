@@ -3,7 +3,6 @@ image: node:10.3.0
 pages:
   stage: deploy
   script:
-  - npm install
   - npm run deploy
   artifacts:
     paths:
