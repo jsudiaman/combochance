@@ -1,6 +1,8 @@
 # Combo Chance
 ![Combo Chance](/img/logo.png)
 
+[![Code Style](http://img.shields.io/badge/Code%20Style-airbnb-ff5a5f.svg?logo=airbnb)](http://github.com/airbnb/javascript) [![JSDoc](http://img.shields.io/badge/JSDoc-latest-blue.svg?logo=javascript)](http://combochance.sudicode.com/docs/combochance/1.0.0)
+
 Suppose that you're a Yu-Gi-Oh! player who runs an Agent Fairy deck. (I understand that you may not be familiar with Yu-Gi-Oh!, and that's okay. Combo Chance works with all kinds of TCGs.)
 
 In Agent Fairies, opening with [Valhalla, Hall of the Fallen](http://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=7573) and [Archlord Kristya](http://www.db.yugioh-card.com/yugiohdb/card_search.action?ope=2&cid=8283) is awesome. This combo locks down Special Summons and will surely bait out removal. But how often will this happen? Find out using Combo Chance!
