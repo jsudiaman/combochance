@@ -6,7 +6,7 @@ const insert = require('gulp-insert');
 const rename = require('gulp-rename');
 const uglifycss = require('gulp-uglifycss');
 
-gulp.task('browserify', ['jquery-plugins'], () => gulp.src('js/index.js')
+gulp.task('browserify', () => gulp.src('js/index.js')
   .pipe(bro({
     transform: [
       babelify.configure({ presets: ['env'] }),
@@ -37,4 +37,10 @@ gulp.task('jquery-plugins', () => gulp.src(['js/vendor/detectmobilebrowser.js', 
   .pipe(insert.prepend('import jQuery from \'jquery\';'))
   .pipe(gulp.dest('js/')));
 
-gulp.task('build', ['browserify', 'concat-css', 'copy-fonts', 'copy-images', 'copy-index']);
+gulp.task('build', gulp.parallel(
+  gulp.series('jquery-plugins', 'browserify'),
+  'concat-css',
+  'copy-fonts',
+  'copy-images',
+  'copy-index',
+));
