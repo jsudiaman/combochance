@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+- "10"
+
+script: bash ./deploy.sh
+env:
+  global:
+  - ENCRYPTION_LABEL: "a013fb16e717"
+  - COMMIT_AUTHOR_EMAIL: "jsudiaman@gmail.com"
