@@ -29,24 +29,7 @@ export function powerset(arr, maxLength) {
   }
 
   // Return unique elements
-  return _.uniqWith(ps, (arr1, arr2) => {
-    // if the other array is a falsy value, return
-    if (!arr2) {
-      return false;
-    }
-
-    // compare lengths - can save a lot of time
-    if (arr1.length !== arr2.length) {
-      return false;
-    }
-
-    for (let i = 0, l = arr1.length; i < l; i += 1) {
-      if (arr1[i] !== arr2[i]) {
-        return false;
-      }
-    }
-    return true;
-  });
+  return _.uniqWith(ps, _.isEqual);
 }
 
 /**
@@ -55,7 +38,7 @@ export function powerset(arr, maxLength) {
  * @param {number} numRows Number of rows
  * @return {Array[]} 2D (NOT rectangular) array which represents Pascal's triangle
  */
-export function createPascalTriangle(numRows) {
+function createPascalTriangle(numRows) {
   const pascalTriangle = [];
 
   for (let i = 0; i < numRows + 1; i += 1) {
