@@ -39,7 +39,7 @@
     "http-server": "^0.11.1",
     "jquery": "^3.4.0",
     "jsdoc": "^3.5.5",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "minami": "^1.2.3",
     "uglifyify": "^4.0.5"
   },
