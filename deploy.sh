@@ -22,6 +22,7 @@ SHA=`git rev-parse --verify HEAD`
 
 # Clone the existing gh-pages for this repo into public/
 # Delete all existing contents except CNAME and .git (we will re-create them)
+rm -rf public
 git clone $REPO public
 cd public
 git checkout $TARGET_BRANCH

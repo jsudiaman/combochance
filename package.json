@@ -4,9 +4,8 @@
   "description": "Neat tool for TCG players.",
   "scripts": {
     "build": "gulp build",
-    "docs": "jsdoc --configure .jsdoc.json --verbose",
     "lint": "eslint .",
-    "deploy": "npm run build && npm run lint && npm run docs",
+    "deploy": "npm run build && npm run lint",
     "prestart": "npm run deploy",
     "start": "http-server",
     "cy:run": "cypress run",
@@ -39,9 +38,7 @@
     "gulp-uglifycss": "^1.0.9",
     "http-server": "^0.11.1",
     "jquery": "^3.4.0",
-    "jsdoc": "^3.6.3",
     "lodash": "^4.17.13",
-    "minami": "^1.2.3",
     "uglifyify": "^4.0.5"
   },
   "devDependencies": {

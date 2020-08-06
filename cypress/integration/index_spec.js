@@ -27,6 +27,7 @@ describe('Index Page', () => {
 
     examples.forEach((example) => {
       it(`should compute chance for ${example.title}`, () => {
+        cy.reload();
         cy.contains('Examples').click();
         cy.contains(example.title).click();
         cy.get('#results').should('contain.text', example.chance);
