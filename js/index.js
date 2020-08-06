@@ -185,9 +185,7 @@ function init() {
       } catch (e) {
         handle(e);
       } finally {
-        if (!$.browser.mobile) {
-          scrollTo(0, document.body.scrollHeight);
-        }
+        scrollTo(0, document.body.scrollHeight);
       }
     }
   });

@@ -32,7 +32,7 @@ gulp.task('copy-images', () => gulp.src('img/**/*')
 gulp.task('copy-index', () => gulp.src('index.html')
   .pipe(gulp.dest('public')));
 
-gulp.task('jquery-plugins', () => gulp.src(['js/vendor/detectmobilebrowser.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js'])
+gulp.task('jquery-plugins', () => gulp.src(['node_modules/bootstrap/dist/js/bootstrap.min.js'])
   .pipe(concat('jqueryplugins.js'))
   .pipe(insert.prepend('import jQuery from \'jquery\';'))
   .pipe(gulp.dest('js/')));

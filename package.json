@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Neat tool for TCG players.",
   "scripts": {
-    "prebuild": "npm install",
     "build": "gulp build",
     "docs": "jsdoc --configure .jsdoc.json --verbose",
     "lint": "eslint .",
@@ -51,7 +50,6 @@
     "start-server-and-test": "^1.11.2"
   },
   "eslintIgnore": [
-    "/js/vendor/*",
     "jqueryplugins.js",
     "/public/*"
   ]
