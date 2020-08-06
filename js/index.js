@@ -167,7 +167,7 @@ function init() {
       handle('Your deck size is too small, check your "Amount in Deck" values.');
     } else if (data.handSize < calculator.getSumRequired(data)) {
       handle('Your hand size is too small for this combo.');
-    } else if (_.some(document.getElementsByClassName('num'), elem => elem.value === '')) {
+    } else if (_.some(document.getElementsByClassName('num'), (elem) => elem.value === '')) {
       handle('Check your "Amount in Deck" and "Amount Required" values. One of them is not a number.');
     } else if (data.deckSize > MAX_DECK_SIZE) {
       handle(`If your deck has ${data.deckSize} cards, I wouldn't suggest playing combo.`);
@@ -178,7 +178,7 @@ function init() {
 
         jq.empty()
           .append('Combo: ')
-          .append(_.map(data.cards, card => `${card.numRequired}x ${card.name || 'Unnamed Card'}`).join(', '))
+          .append(_.map(data.cards, (card) => `${card.numRequired}x ${card.name || 'Unnamed Card'}`).join(', '))
           .append(`<br>Deck Size: ${data.deckSize}, Cards in Hand: ${data.handSize}`)
           .append(`<br><br>The chance of you pulling this off is ${obj.experimental ? '<a href="#" data-toggle="modal" data-target="#approximately">approximately</a> ' : ''}`)
           .append(`${Number(obj.percent).toPrecision(3)}%.`);

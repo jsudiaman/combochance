@@ -16,8 +16,8 @@ export function powerset(arr, maxLength) {
   let ps = [[]];
   if (maxLength === 0) {
     return ps;
-  } else if (maxLength === 1) {
-    ps = ps.concat(_.map(arr, x => [x]));
+  } if (maxLength === 1) {
+    ps = ps.concat(_.map(arr, (x) => [x]));
   } else {
     for (let i = 0; i < arr.length; i += 1) {
       for (let j = 0, len = ps.length; j < len; j += 1) {

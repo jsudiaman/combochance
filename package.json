@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "deploy": "npm run build && npm run lint && npm run docs",
     "prestart": "npm run deploy",
-    "start": "http-server"
+    "start": "http-server",
+    "cy:run": "cypress run",
+    "test": "start-server-and-test start http://localhost:8080 cy:run"
   },
   "repository": {
     "type": "git",
@@ -27,8 +29,8 @@
     "babelify": "^8.0.0",
     "bootstrap": "^3.4.1",
     "browserify": "^14.5.0",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.8.0",
     "gulp": "^4.0.2",
     "gulp-bro": "^1.0.2",
@@ -42,6 +44,11 @@
     "lodash": "^4.17.13",
     "minami": "^1.2.3",
     "uglifyify": "^4.0.5"
+  },
+  "devDependencies": {
+    "cypress": "^4.12.1",
+    "eslint-plugin-cypress": "^2.11.1",
+    "start-server-and-test": "^1.11.2"
   },
   "eslintIgnore": [
     "/js/vendor/*",
