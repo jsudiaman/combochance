@@ -5,7 +5,7 @@ describe('Index Page', () => {
     cy.visit('/', {
       onBeforeLoad: (win) => win.sessionStorage.clear(),
     });
-    cy.reload();
+    cy.wait(1000);
   });
 
   describe('Examples', () => {

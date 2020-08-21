@@ -1,42 +1,29 @@
-/**
- * Calculator module.
- *
- * @module calculator
- */
+// @flow
 import _ from 'lodash';
 import * as math from './math';
+import type { Chance, Data } from './typedefs';
 
 const MAX_N = 26; // Maximum length of a power set is 2^MAX_N
 const MONTE_CARLO_TRIALS = 10000; // Number of trials to use for Monte Carlo simulation
 
 /**
  * Get sum of "Amount Required" values in the table.
- *
- * @param {Data} data Form data
- * @returns {number} The sum
  */
-export function getSumRequired(data) {
+export function getSumRequired(data: Data): number {
   return _.reduce(data.cards, (acc, card) => acc + card.numRequired, 0);
 }
 
 /**
  * Get sum of "Amount in Deck" values in the table.
- *
- * @param {Data} data Form data
- * @returns {number} The sum
  */
-export function getSumInDeck(data) {
+export function getSumInDeck(data: Data): number {
   return _.reduce(data.cards, (acc, card) => acc + card.numInDeck, 0);
 }
 
 /**
  * Compute the chance of the given combo, with EXACT amount required (no more, no less).
- *
- * @param {Data} data Form data
- * @return {number} Probability in decimal form
- * @private
  */
-function getChanceExact(data) {
+function getChanceExact(data: Data): number {
   // Use multivariate hypergeometric formula to compute chance
   const num = _.reduce(
     data.cards,
@@ -50,12 +37,8 @@ function getChanceExact(data) {
 /**
  * Compute the chance of the given combo using Monte Carlo method. (Used if standard computation
  * would require an extraordinarily large power set.)
- *
- * @param {Data} data Form data
- * @return {number} Probability in decimal form
- * @private
  */
-function getChanceExperimental(data) {
+function getChanceExperimental(data: Data): number {
   // Define variables
   let successes = 0;
   const deck = [];
@@ -87,11 +70,8 @@ function getChanceExperimental(data) {
 /**
  * Compute the chance of the combo (given by form data). Accounts for the possibility of having more
  * than required.
- *
- * @param {Data} data Form data
- * @return {Chance} The chance
  */
-export function getChance(data) {
+export function getChance(data: Data): Chance {
   // Obtain required data
   const tmpData = JSON.parse(JSON.stringify(data));
   const tmpCards = JSON.stringify(tmpData.cards);

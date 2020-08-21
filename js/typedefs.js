@@ -1,25 +1,17 @@
-/**
- * Card object.
- *
- * @typedef {Object} Card
- * @property {string} name        Name of the card
- * @property {number} numInDeck   Number of copies in deck
- * @property {number} numRequired Number of copies required in starting hand
- */
+// @flow
+export type Card = {
+  name: string,
+  numInDeck: number,
+  numRequired: number,
+};
 
-/**
- * Form data object.
- *
- * @typedef {Object} Data
- * @property {number} deckSize Number of cards in deck
- * @property {number} handSize Number of cards in starting hand
- * @property {Card[]} cards    Cards required in starting hand
- */
+export type Data = {
+  deckSize: number,
+  handSize: number,
+  cards: Card[],
+};
 
-/**
- * Chance object.
- *
- * @typedef {Object} Chance
- * @property {number}  percent      Probability in percent form.
- * @property {boolean} experimental `true` if the probability was determined experimentally.
- */
+export type Chance = {
+  percent: number,
+  experimental: boolean,
+};

@@ -1,12 +1,9 @@
-/**
- * Web page.
- *
- * @namespace index
- */
+// @flow
 import _ from 'lodash';
 import $ from 'jquery';
 
 import * as calculator from './calculator';
+import type { Data } from './typedefs';
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import './jqueryplugins';
 
@@ -18,11 +15,8 @@ const MAX_DECK_SIZE = 1000; // Maximum deck size to process.
 
 /**
  * Get all form data as an object.
- *
- * @returns {Data} Object which contains the form data.
- * @memberof index
  */
-function getData() {
+function getData(): Data {
   const data = {};
   data.deckSize = parseInt($('#deckSize').val(), 10);
   data.handSize = parseInt($('#handSize').val(), 10);
@@ -45,20 +39,15 @@ function getData() {
 
 /**
  * Handle an error.
- *
- * @param {Error} e Error to handle
- * @memberof index
  */
-function handle(e) {
+function handle(e: string): void {
   $('#results').html(`<div class="alert alert-danger">${e}</div>`);
 }
 
 /**
  * Add a row.
- *
- * @memberof index
  */
-function addRow() {
+function addRow(): void {
   const row = nRows;
 
   $(`#card${row}`).html(`<td><input type="text" id="name${row}" placeholder="Card Name" class="form-control"/></td>
@@ -82,10 +71,8 @@ function addRow() {
 
 /**
  * Delete a row.
- *
- * @memberof index
  */
-function deleteRow() {
+function deleteRow(): void {
   if (nRows > 1) {
     $(`#card${nRows - 1}`).html('');
     nRows -= 1;
@@ -94,11 +81,8 @@ function deleteRow() {
 
 /**
  * Set form data.
- *
- * @param {Data} data Form data to set
- * @memberof index
  */
-function setData(data) {
+function setData(data: Data): void {
   const numCards = data.cards.length || 1;
 
   // Add / remove rows
@@ -131,10 +115,8 @@ function setData(data) {
 
 /**
  * Initialize (once DOM is ready).
- *
- * @memberof index
  */
-function init() {
+function init(): void {
   // Collapse
   $('.collapse').collapse();
 
@@ -185,7 +167,9 @@ function init() {
       } catch (e) {
         handle(e);
       } finally {
-        scrollTo(0, document.body.scrollHeight);
+        if (document.body != null) {
+          scrollTo(0, document.body.scrollHeight);
+        }
       }
     }
   });
@@ -202,7 +186,10 @@ function init() {
       }
       sessionStorage.clear();
     });
-    document.getElementById('results').innerHTML = '';
+    const resultsContainer = document.getElementById('results');
+    if (resultsContainer != null) {
+      resultsContainer.innerHTML = '';
+    }
   });
 
   // Examples

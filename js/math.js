@@ -1,27 +1,20 @@
-/**
- * Math module.
- *
- * @module math
- */
+// @flow
 import _ from 'lodash';
 
 /**
  * Compute the power set of the array.
- *
- * @param {Array}  arr         An array
- * @param {number} [maxLength] Maximum cardinality of subsets
- * @return {Array[]} All possible subsets of the array
  */
-export function powerset(arr, maxLength) {
+export function powerset<T>(arr: T[], maxSubsetLength: number): T[][] {
   let ps = [[]];
-  if (maxLength === 0) {
+  if (maxSubsetLength === 0) {
     return ps;
-  } if (maxLength === 1) {
+  }
+  if (maxSubsetLength === 1) {
     ps = ps.concat(_.map(arr, (x) => [x]));
   } else {
     for (let i = 0; i < arr.length; i += 1) {
       for (let j = 0, len = ps.length; j < len; j += 1) {
-        if (typeof maxLength === 'undefined' || ps[j].length < maxLength) {
+        if (typeof maxSubsetLength === 'undefined' || ps[j].length < maxSubsetLength) {
           ps.push(ps[j].concat(arr[i]));
         }
       }
@@ -34,11 +27,8 @@ export function powerset(arr, maxLength) {
 
 /**
  * Create Pascal's triangle with the specified amount of rows.
- *
- * @param {number} numRows Number of rows
- * @return {Array[]} 2D (NOT rectangular) array which represents Pascal's triangle
  */
-function createPascalTriangle(numRows) {
+function createPascalTriangle(numRows: number): number[][] {
   const pascalTriangle = [];
 
   for (let i = 0; i < numRows + 1; i += 1) {
@@ -58,28 +48,18 @@ function createPascalTriangle(numRows) {
 
 /**
  * Number of rows in the currently built Pascal's triangle.
- *
- * @type {number}
- * @private
  */
 let ptRows = 0;
 
 /**
  * Currently built Pascal's triangle, used for calculating binomial coefficients.
- *
- * @type {Array[]}
- * @private
  */
 let pascalTriangle = createPascalTriangle(ptRows);
 
 /**
  * Compute n-choose-k.
- *
- * @param {number} n Number of elements in total
- * @param {number} k Number of elements to choose
- * @returns {number} Value of the binomial coefficient
  */
-export function choose(n, k) {
+export function choose(n: number, k: number): number {
   // Validation
   if (k > n) {
     return 0;

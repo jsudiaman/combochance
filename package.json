@@ -4,7 +4,7 @@
   "description": "Neat tool for TCG players.",
   "scripts": {
     "build": "gulp build",
-    "lint": "eslint .",
+    "lint": "flow && eslint .",
     "deploy": "npm run build && npm run lint",
     "prestart": "npm run deploy",
     "start": "http-server",
@@ -13,12 +13,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/jsudiaman/combochance.git"
+    "url": "git+https://github.com/sudiamanj/combochance.git"
   },
   "author": "Jonathan Sudiaman",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/jsudiaman/combochance/issues"
+    "url": "https://github.com/sudiamanj/combochance/issues"
   },
   "homepage": "http://combochance.sudicode.com/",
   "dependencies": {
@@ -26,16 +26,20 @@
     "lodash": "^4.17.13"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "babelify": "^8.0.0",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-flow": "^7.10.4",
+    "babel-eslint": "^10.1.0",
+    "babelify": "^10.0.0",
     "bootstrap": "^3.4.1",
     "browserify": "^14.5.0",
     "cypress": "^4.12.1",
     "eslint": "^7.6.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.8.0",
+    "flow-bin": "^0.131.0",
     "gulp": "^4.0.2",
     "gulp-bro": "^1.0.2",
     "gulp-concat": "^2.6.1",

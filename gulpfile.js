@@ -9,7 +9,7 @@ const uglifycss = require('gulp-uglifycss');
 gulp.task('browserify', () => gulp.src('js/index.js')
   .pipe(bro({
     transform: [
-      babelify.configure({ presets: ['env'] }),
+      babelify.configure({ presets: ['@babel/preset-env', '@babel/preset-flow'] }),
       ['uglifyify', { global: true }],
     ],
   }))
