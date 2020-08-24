@@ -1,5 +1,6 @@
 // @flow
-import _ from 'lodash';
+import difference from 'lodash/difference';
+import shuffle from 'lodash/shuffle';
 import * as math from './math';
 import type { Chance, Data } from './typedefs';
 
@@ -10,14 +11,14 @@ const MONTE_CARLO_TRIALS = 10000; // Number of trials to use for Monte Carlo sim
  * Get sum of "Amount Required" values in the table.
  */
 export function getSumRequired(data: Data): number {
-  return _.reduce(data.cards, (acc, card) => acc + card.numRequired, 0);
+  return data.cards.reduce((acc, card) => acc + card.numRequired, 0);
 }
 
 /**
  * Get sum of "Amount in Deck" values in the table.
  */
 export function getSumInDeck(data: Data): number {
-  return _.reduce(data.cards, (acc, card) => acc + card.numInDeck, 0);
+  return data.cards.reduce((acc, card) => acc + card.numInDeck, 0);
 }
 
 /**
@@ -25,8 +26,7 @@ export function getSumInDeck(data: Data): number {
  */
 function getChanceExact(data: Data): number {
   // Use multivariate hypergeometric formula to compute chance
-  const num = _.reduce(
-    data.cards,
+  const num = data.cards.reduce(
     (acc, card) => acc * math.choose(card.numInDeck, card.numRequired),
     math.choose(data.deckSize - getSumInDeck(data), data.handSize - getSumRequired(data)),
   );
@@ -44,7 +44,7 @@ function getChanceExperimental(data: Data): number {
   const deck = [];
   const requiredHand = [];
 
-  _.forEach(data.cards, (card) => {
+  data.cards.forEach((card) => {
     for (let i = 0; i < card.numInDeck; i += 1) {
       deck.push(card);
     }
@@ -58,8 +58,8 @@ function getChanceExperimental(data: Data): number {
     deck.push({});
   }
   for (let j = 0; j < MONTE_CARLO_TRIALS; j += 1) {
-    const hand = _.shuffle(deck).slice(0, data.handSize);
-    if (_.difference(requiredHand, hand).length === 0) {
+    const hand = shuffle(deck).slice(0, data.handSize);
+    if (difference(requiredHand, hand).length === 0) {
       successes += 1;
     }
   }

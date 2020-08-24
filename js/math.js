@@ -1,5 +1,6 @@
 // @flow
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
+import uniqWith from 'lodash/uniqWith';
 
 /**
  * Compute the power set of the array.
@@ -10,7 +11,7 @@ export function powerset<T>(arr: T[], maxSubsetLength: number): T[][] {
     return ps;
   }
   if (maxSubsetLength === 1) {
-    ps = ps.concat(_.map(arr, (x) => [x]));
+    ps = ps.concat(arr.map((x) => [x]));
   } else {
     for (let i = 0; i < arr.length; i += 1) {
       for (let j = 0, len = ps.length; j < len; j += 1) {
@@ -22,7 +23,7 @@ export function powerset<T>(arr: T[], maxSubsetLength: number): T[][] {
   }
 
   // Return unique elements
-  return _.uniqWith(ps, _.isEqual);
+  return uniqWith(ps, isEqual);
 }
 
 /**
