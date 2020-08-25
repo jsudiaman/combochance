@@ -4,7 +4,7 @@
   "description": "Neat tool for TCG players.",
   "scripts": {
     "build": "gulp build",
-    "lint": "flow && eslint .",
+    "lint": "eslint . && flow",
     "deploy": "npm run build && npm run lint",
     "prestart": "npm run deploy",
     "start": "http-server",
