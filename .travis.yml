@@ -1,11 +1,15 @@
 language: node_js
 node_js:
-- "10"
-
+- '10'
 script: npm test
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  local_dir: "./public"
+  fqdn: combochance.sudicode.com
+  on:
+    branch: master
 env:
   global:
-  - ENCRYPTION_LABEL: "a013fb16e717"
-  - COMMIT_AUTHOR_EMAIL: "jsudiaman@gmail.com"
-after_success:
-  - bash ./deploy.sh
+    secure: 1foMvVln4XcG0dO7ztiziS1gw+UW3bbzDa2vchL7EYMlWAbhe8SE1axEZoOZGBMzPyVRBQN9CG6OAQ4DPMPJ5FmsVwaqfzdUxdtYPMJRpXgtH/eEeftm7VdHmV6bjg7cSil0s1bfEahx1DVa5PMsnZ3sodSZfU7m62tz5UPHxF/R+TS9CuxUGt5kFgg/zRyyyvOZ8WMbUjXwrDWt4tIxqzGvqxdZUEGeeLpqaZQX0FyMe36zm8zi77gZYWfBxpz0FDhSuUIKAxj+Vjv2ti3JLNc2m0uayonUr63ag6k89FSWcC0wHizL7XZVFkDTzRinP1kjRA9L/PiHKd1snK3kUqjFkyZ08x017gINx+Qtl4FdHzD6jYN56AlaVQpk+XJO2OJc9khgV5U1EY4mX+w7OLOAFQTN1VJ3g2xXqVIluu11j7Vw2VrFq3kgfWQCmBhvtc06+ampuM5tCe4qmdrXYTvAnwyO/N1/9mJFL1+DSY8XjgpO6K43TQ5HqyokcWuFLYISQuqPaniQ3ASxH797ml85o5ngK77KCtqELEa3GGOKBO3IJvGkFjgwjYA2F27e7zuVPW+VBTph9tmlnFxuXbznbe8FsQRXwLSs6jFDkxTI6LtasbzE/BWQDhmct2IIascWso9Fm4JFZE8Eai/6dTSb6d5FmsQYSM99QMQbH28=
