@@ -23,7 +23,7 @@
   "homepage": "http://combochance.sudicode.com/",
   "dependencies": {
     "jquery": "^3.4.0",
-    "lodash": "^4.17.13"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
