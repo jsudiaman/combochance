@@ -1,7 +1,6 @@
 # Combo Chance
-![Combo Chance](/img/logo.png)
 
-[![Build Status](https://travis-ci.com/sudiamanj/combochance.svg?branch=master)](https://travis-ci.com/sudiamanj/combochance) [![Code Style](http://img.shields.io/badge/code%20style-airbnb-ff5a5f.svg?logo=airbnb)](http://github.com/airbnb/javascript)
+![Combo Chance](/img/logo.png)
 
 Suppose that you're a Yu-Gi-Oh! player who runs an Agent Fairy deck. (I understand that you may not be familiar with Yu-Gi-Oh!, and that's okay. Combo Chance works with all kinds of TCGs.)
 
